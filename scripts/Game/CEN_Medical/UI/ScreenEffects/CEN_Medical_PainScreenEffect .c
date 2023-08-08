@@ -95,10 +95,12 @@ class CEN_Medical_PainScreenEffect : SCR_BaseScreenEffect
 		if (!m_wWhiteFlash || !m_pPainHZ)
 			return;
 		
-		float effectStrength = 1;
-		const float REDUCEDSTRENGTH = 0.7;
-		bool playHeartBeat = true; 
+		float effectStrength = 0;
 		
+		// Pain can only be fealt when conscious
+		if (!m_pDamageManager.GetIsUnconscious())
+			effectStrength = m_pDamageManager.CEN_Medical_GetPainIntensity();
+				
 		m_wWhiteFlash.SetSaturation(1);
 		
 		if (m_iEffectNo == 1)
