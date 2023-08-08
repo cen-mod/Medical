@@ -1,0 +1,74 @@
+FrameWidgetClass {
+ {
+  FrameWidgetClass "{5CEED9EF77337926}" {
+   Prefab "{5CEED9EF77337926}"
+   {
+    SizeLayoutWidgetClass "{5CEED9EF77337922}" {
+     Prefab "{5CEED9EF77337922}"
+     {
+      FrameWidgetClass "{5CEED9EF7733792C}" {
+       Prefab "{5CEED9EF7733792C}"
+       {
+        OverlayWidgetClass "{5CEED9EF7733792D}" {
+         Prefab "{5CEED9EF7733792D}"
+         {
+          VerticalLayoutWidgetClass "{5CEED9EF7733792A}" {
+           Prefab "{5CEED9EF7733792A}"
+           {
+            VerticalLayoutWidgetClass "{5CEED9EF773378D2}" {
+             Prefab "{5CEED9EF773378D2}"
+             {
+              HorizontalLayoutWidgetClass "{5E101C5EA7FCA6B7}" {
+               Name "CEN_Medical_HorizontalPainHintLayout0"
+               Slot LayoutSlot "{5E101C5EA7FCA6DD}" {
+               }
+               {
+                VerticalLayoutWidgetClass "{5E101C5EBF3AB444}" {
+                 Name "VerticalLayout1"
+                 Slot LayoutSlot "{5E101C5EBF3AB45B}" {
+                 }
+                 {
+                  ImageWidgetClass "{5E101C5DA0689AF7}" {
+                   Name "CEN_Medical_PainHint_Icon"
+                   Slot LayoutSlot "{5E101C5DA0689A23}" {
+                   }
+                   "Is Visible" 0
+                   Size 48 48
+                  }
+                 }
+                }
+                VerticalLayoutWidgetClass "{5E101C5EB18BFF1A}" {
+                 Name "VerticalLayout0"
+                 Slot LayoutSlot "{5E101C5EB18BFF3F}" {
+                 }
+                 {
+                  TextWidgetClass "{5E101C5ECF744B18}" {
+                   Name "CEN_Medical_PainHint_Text"
+                   Slot LayoutSlot "{5E101C5ECF7448DD}" {
+                    SizeMode Fill
+                   }
+                   "Is Visible" 0
+                   "Font Size" 18
+                   "Min Font Size" 18
+                   "Vertical Alignment" Center
+                   Wrap 1
+                   Offset 20 0
+                  }
+                 }
+                }
+               }
+              }
+             }
+            }
+           }
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
