@@ -7,6 +7,63 @@ GameProject {
  }
  Configurations {
   GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{5E101C564AA3420C}" {
+      StringTableSource "{D50D33903708F7E3}Language/CEN_Medical_localization.st"
+      Languages {
+       LanguageDefinition "{5E101C564842E774}" {
+        Code "cs_cz"
+        StringTableRuntime "{E78C6F0E30952230}Language/CEN_Medical_localization.cs_cz.conf"
+       }
+       LanguageDefinition "{5E101C564842E4C4}" {
+        Code "de_de"
+        StringTableRuntime "{32F2753D23363310}Language/CEN_Medical_localization.de_de.conf"
+       }
+       LanguageDefinition "{5E101C564842E4D9}" {
+        Code "en_us"
+        StringTableRuntime "{6C02FF7649C53611}Language/CEN_Medical_localization.en_us.conf"
+       }
+       LanguageDefinition "{5E101C564842E4FD}" {
+        Code "es_es"
+        StringTableRuntime "{A94EB2FFA7C75D0E}Language/CEN_Medical_localization.es_es.conf"
+       }
+       LanguageDefinition "{5E101C564842E413}" {
+        Code "fr_fr"
+        StringTableRuntime "{12E647C84144BE0C}Language/CEN_Medical_localization.fr_fr.conf"
+       }
+       LanguageDefinition "{5E101C564842E430}" {
+        Code "it_it"
+        StringTableRuntime "{92FAC8FCEC663DF5}Language/CEN_Medical_localization.it_it.conf"
+       }
+       LanguageDefinition "{5E101C564842E448}" {
+        Code "ja_jp"
+        StringTableRuntime "{82E1756ED2170D5E}Language/CEN_Medical_localization.ja_jp.conf"
+       }
+       LanguageDefinition "{5E101C564842E46E}" {
+        Code "ko_kr"
+        StringTableRuntime "{225F5DC2413A0E61}Language/CEN_Medical_localization.ko_kr.conf"
+       }
+       LanguageDefinition "{5E101C564842E587}" {
+        Code "pl_pl"
+        StringTableRuntime "{7E2EFB38FFD5921D}Language/CEN_Medical_localization.pl_pl.conf"
+       }
+       LanguageDefinition "{5E101C564842E59B}" {
+        Code "pt_br"
+        StringTableRuntime "{AB5961F4C42B58A7}Language/CEN_Medical_localization.pt_br.conf"
+       }
+       LanguageDefinition "{5E101C564842E217}" {
+        Code "ru_ru"
+        StringTableRuntime "{FE18755C59523DD1}Language/CEN_Medical_localization.ru_ru.conf"
+       }
+       LanguageDefinition "{5E101C564842E243}" {
+        Code "zh_cn"
+        StringTableRuntime "{AEF04E970CDC5399}Language/CEN_Medical_localization.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
   }
   GameProjectConfig HEADLESS {
   }
