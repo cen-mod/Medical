@@ -9,6 +9,19 @@ modded class SCR_InventoryDamageInfoUI : ScriptedWidgetComponent
 
 	protected ResourceName m_sMedicalIconsImageSet 	= "{B9199157B90D6216}UI/Textures/InventoryIcons/Medical/Medical-icons.imageset";
 	protected string m_sWarningIcon					= "Warning_UI";
+	protected string m_sEpinephrineText 			= "#CEN_Medical-DamageInfo_EpinephrineApplied";
+	
+	//------------------------------------------------------------------------------------------------
+	//! Vanilla morphine becomes epinephrine
+	override void SetMorphineStateVisible(bool visible)
+	{
+		super.SetMorphineStateVisible(visible);
+		
+		if (!m_wMorphineTextWidget)
+			return;
+		
+		m_wMorphineTextWidget.SetText(m_sEpinephrineText);
+	}
 
 	//------------------------------------------------------------------------------------------------
 	void CEN_Medical_SetPainStateVisible(bool visible, string painText)
