@@ -159,9 +159,23 @@ SCR_ChimeraCharacter {
     }
     CEN_Medical_PainHitZone CEN_Medical_Pain {
      IgnoreExplosions 1
+     MaxHealth 100
      "DamageState threshold" {
-      0.75 0.5 0.333
+      0.8 0.333
      }
+    }
+   }
+  }
+  ActionsManagerComponent "{520EA1D2F659CE02}" {
+   additionalActions {
+    CEN_Medical_EpinephrineUserAction "{5E110E1B502CAF39}" {
+     ParentContextList {
+      "LeftArm" "RightArm"
+     }
+     UIInfo UIInfo "{5E110E1B69DFB260}" {
+      Name "#CEN_Medical-EpinephrineInjectionAction"
+     }
+     m_eConsumableType CEN_MEDICAL_EPINEPHRINE
     }
    }
   }
