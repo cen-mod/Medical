@@ -159,6 +159,7 @@ SCR_ChimeraCharacter {
     }
     CEN_Medical_PainHitZone CEN_Medical_Pain {
      IgnoreExplosions 1
+     BaseDamageMultiplier 0.5
      MaxHealth 100
      "DamageState threshold" {
       0.8 0.333
