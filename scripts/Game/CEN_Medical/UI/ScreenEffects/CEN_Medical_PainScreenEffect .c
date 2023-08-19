@@ -22,7 +22,6 @@ class CEN_Medical_PainScreenEffect : SCR_BaseScreenEffect
 	// Character
 	protected SCR_CharacterDamageManagerComponent	m_pDamageManager;
 	protected CEN_Medical_PainHitZone				m_pPainHZ;
-	private bool m_bLocalPlayerOutsideCharacter;
 	protected ChimeraCharacter						m_pCharacterEntity;
 
 	protected bool m_bPainEffect;
@@ -81,12 +80,6 @@ class CEN_Medical_PainScreenEffect : SCR_BaseScreenEffect
 				m_bPainEffect = m_bIsInPain;
 			};
 		};
-	}
-	
-	//------------------------------------------------------------------------------------------------
-	override void UpdateEffect(float timeSlice, bool playerOutsideCharacter)
-	{
-		m_bLocalPlayerOutsideCharacter = playerOutsideCharacter;
 	}
 	
 	//------------------------------------------------------------------------------------------------
