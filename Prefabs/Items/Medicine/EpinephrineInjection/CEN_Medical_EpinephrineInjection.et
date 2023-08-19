@@ -1,0 +1,26 @@
+GenericEntity : "{3238FC0BDB67AA78}Prefabs/Items/Medicine/MorphineInjection_01/MorphineInjection_01_base.et" {
+ ID "508AB2013EEE1E00"
+ components {
+  InventoryItemComponent "{5222EB4D0C73006B}" {
+   Attributes SCR_ItemAttributeCollection "{5222EB4D0A2B466B}" {
+    ItemDisplayName SCR_InventoryUIInfo "{5222EB4D07D865FA}" {
+     Name "#CEN_Medical-Item_Epinephrine_Name"
+     Description "#CEN_Medical-Item_Epinephrine_Description"
+    }
+   }
+  }
+  MeshObject "{59CE87DB17B6B1C5}" {
+   Materials {
+    MaterialAssignClass "{5E101C571020DAB0}" {
+     SourceMaterial "MorphineInjection_01"
+     AssignedMaterial "{BC828B62FBDE7EED}Assets/Items/Medicine/EpinephrineInjection/Data/EpinephrineInjection.emat"
+    }
+   }
+  }
+  SCR_ConsumableItemComponent "{59E68C74C5CEE74F}" {
+   m_ConsumableEffect CEN_Medical_ConsumableEpinephrine "{59E68C74C1F3910E}" {
+   }
+  }
+ }
+ coords 0 0 -0.055
+}
