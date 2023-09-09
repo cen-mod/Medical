@@ -26,7 +26,7 @@ class CEN_StateMachine_Transition : Managed
 class CEN_StateMachine_Machine : Managed
 {
 	// These variables should be assigned in the ctor
-	protected float m_fOnStateTimeout = 0;
+	protected float m_fOnStateTimeout = 0; // Minimum number of seconds between on state event calls
 	
 	protected IEntity m_eOwner;
 	protected typename m_sCurrentStateName;

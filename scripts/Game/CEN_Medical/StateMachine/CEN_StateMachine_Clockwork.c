@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------------------------------
 class CEN_StateMachine_Clockwork : Managed
 {
-	protected static ref CEN_StateMachine_Clockwork m_Instance = CEN_StateMachine_Clockwork();
+	protected static ref CEN_StateMachine_Clockwork m_pInstance = CEN_StateMachine_Clockwork();
 	protected ref array<CEN_StateMachine_Machine> m_aMachines = {};
 	protected ref array<CEN_StateMachine_Machine> m_aMachinesUpdated = {};
 	protected bool m_bMachinesListModified = false;
@@ -16,7 +16,7 @@ class CEN_StateMachine_Clockwork : Managed
 	//------------------------------------------------------------------------------------------------
 	static CEN_StateMachine_Clockwork GetInstance()
 	{
-		return m_Instance;
+		return m_pInstance;
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -33,7 +33,6 @@ class CEN_StateMachine_Clockwork : Managed
 			};
 			
 			m_iCurrentMachine = 0;
-			
 		};
 		
 		CEN_StateMachine_Machine machine = m_aMachines[m_iCurrentMachine];
