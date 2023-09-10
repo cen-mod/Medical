@@ -1,4 +1,4 @@
-enum CENMedicalECharacterBloodState
+enum CEN_Medical_ECharacterBloodState
 {
 BLOOD_VOLUME_CLASS_1_HEMORRHAGE,
 BLOOD_VOLUME_CLASS_2_HEMORRHAGE,
