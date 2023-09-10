@@ -1,0 +1,662 @@
+SCR_CharacterDamageManagerComponent 
+{	
+	"Additional hit zones" {
+  ScriptedHitZone Health {
+   HZDefault 1
+   IgnoreExplosions 1
+   MaxHealth 100
+   "Fragmentation multiplier" 0.25
+   "DamageState threshold" {
+    0.75
+    0.5
+    0.333
+   }
+  }
+  SCR_CharacterBloodHitZone Blood {
+   IgnoreExplosions 1
+   MaxHealth 6000
+   DamageReduction 0
+   "DamageState threshold" {
+    1
+    0.85
+    0.7
+	0.6
+	0.5
+   }
+   m_fFullRegenerationTime 1350
+  }
+  SCR_CharacterResilienceHitZone Resilience {
+   IgnoreExplosions 1
+   BaseDamageMultiplier 0.8
+   MaxHealth 100
+   "Fragmentation multiplier" 0.5
+   "Explosive multiplier" 2
+   "DamageState threshold" {
+    0.75
+    0.5
+    0.333
+   }
+   m_fFullRegenerationTime 20
+  }
+  SCR_CharacterHeadHitZone Head {
+   ColliderNames {
+    "UCX_Head"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C50}" {
+     Parent "Health"
+     Overkill 1
+    }
+    ParentHitZone "{558729C1F2DC6C5E}" {
+     Parent "Resilience"
+     DamageMultiplier 2
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 30
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.2
+   "Melee multiplier" 3
+   "Kinetic multiplier" 4.2
+   "Explosive multiplier" 3
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 600
+   m_aDamageSubmeshes {
+    "Head"
+   }
+   m_eHitZoneGroup HEAD
+   m_eBandageAnimationBodyPart UpperHead
+  }
+  SCR_CharacterHitZone Chest {
+   ColliderNames {
+    "UCX_Chest"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C43}" {
+     Parent "Health"
+     DamageMultiplier 0.9
+     HealingMultiplier 0.9
+     Overkill 1
+    }
+    ParentHitZone "{558729C1F2DC6C42}" {
+     Parent "Resilience"
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 100
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.75
+   "Kinetic multiplier" 1.5
+   "Explosive multiplier" 3
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Torso"
+   }
+   m_aBleedingAreas {
+    LoadoutJacketArea "{5A6C71CE212629A4}" {
+    }
+    LoadoutVestArea "{5A6C71CE270AB6C6}" {
+    }
+   }
+   m_eHitZoneGroup UPPERTORSO
+   m_eBandageAnimationBodyPart UpperTorso
+  }
+  SCR_CharacterHitZone Abdomen {
+   ColliderNames {
+    "UCX_Belly"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C4F}" {
+     Parent "Health"
+     DamageMultiplier 0.7
+     HealingMultiplier 0.7
+     Overkill 1
+    }
+    ParentHitZone "{558729C1F2DC6C4E}" {
+     Parent "Resilience"
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 100
+   DamageReduction 1
+   DamageThreshold 1
+   "Kinetic multiplier" 1.5
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Torso"
+   }
+   m_aBleedingAreas {
+    LoadoutJacketArea "{5A6C71CE5115DC03}" {
+    }
+    LoadoutVestArea "{5A6C71CE56E01F0F}" {
+    }
+   }
+   m_eHitZoneGroup LOWERTORSO
+   m_eBandageAnimationBodyPart LowerTorso
+  }
+  SCR_CharacterHitZone Hips {
+   ColliderNames {
+    "UCX_Buttocks"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C48}" {
+     Parent "Health"
+     DamageMultiplier 0.65
+     HealingMultiplier 0.65
+    }
+    ParentHitZone "{558729C1F2DC6C76}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 100
+   DamageReduction 1
+   DamageThreshold 1
+   "Kinetic multiplier" 1.2
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Groin"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CE41732F8B}" {
+    }
+   }
+   m_eHitZoneGroup LOWERTORSO
+   m_eBandageAnimationBodyPart LowerTorso
+  }
+  SCR_CharacterHitZone RArm {
+   ColliderNames {
+    "UCS_Arm_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C74}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6C72}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 70
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Arm_R"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE7CD410D2}" {
+    }
+    LoadoutJacketArea "{5A6C71CE72CF3790}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTARM
+   m_eBandageAnimationBodyPart RightHand
+  }
+  SCR_CharacterHitZone LArm {
+   ColliderNames {
+    "UCS_Arm_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C7D}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6C7C}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 70
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Arm_L"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE6B79C630}" {
+    }
+    LoadoutJacketArea "{5A6C71CE68D043E7}" {
+    }
+   }
+   m_eHitZoneGroup LEFTARM
+   m_eBandageAnimationBodyPart LeftHand
+  }
+  SCR_CharacterHitZone RForearm {
+   ColliderNames {
+    "UCS_Forearm_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C65}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6C63}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 50
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.5
+   "Explosive multiplier" 2
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "ArmUpper_R"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE66558D58}" {
+    }
+    LoadoutJacketArea "{5A6C71CE64E88C0E}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTARM
+   m_eBandageAnimationBodyPart RightHand
+  }
+  SCR_CharacterHitZone LForearm {
+   ColliderNames {
+    "UCS_Forearm_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6C6D}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6C6C}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 50
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.5
+   "Explosive multiplier" 2
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "ArmUpper_L"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE9C555AEE}" {
+    }
+    LoadoutJacketArea "{5A6C71CE92662927}" {
+    }
+   }
+   m_eHitZoneGroup LEFTARM
+   m_eBandageAnimationBodyPart LeftHand
+  }
+  SCR_CharacterHitZone RHand {
+   ColliderNames {
+    "UCX_Hand_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6D97}" {
+     Parent "Health"
+     DamageMultiplier 0.7
+     HealingMultiplier 0.7
+    }
+    ParentHitZone "{558729C1F2DC6D96}" {
+     Parent "Resilience"
+     DamageMultiplier 0.75
+     HealingMultiplier 0
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 30
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Hand_R"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE8A6209E8}" {
+    }
+    LoadoutJacketArea "{5A6C71CE880D3B96}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTARM
+   m_eBandageAnimationBodyPart RightHand
+  }
+  SCR_CharacterHitZone LHand {
+   ColliderNames {
+    "UCX_Hand_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6D9F}" {
+     Parent "Health"
+     DamageMultiplier 0.7
+     HealingMultiplier 0.7
+    }
+    ParentHitZone "{558729C1F2DC6D9E}" {
+     Parent "Resilience"
+     DamageMultiplier 0.75
+     HealingMultiplier 0
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 30
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Hand_L"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CE827C62D8}" {
+    }
+    LoadoutJacketArea "{5A6C71CE83C7D702}" {
+    }
+   }
+   m_eHitZoneGroup LEFTARM
+   m_eBandageAnimationBodyPart LeftHand
+  }
+  SCR_CharacterHitZone RThigh {
+   ColliderNames {
+    "UCS_Thigh_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6D99}" {
+     Parent "Health"
+     DamageMultiplier 0.65
+     HealingMultiplier 0.65
+    }
+    ParentHitZone "{558729C1F2DC6D87}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 70
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Leg_R"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEBFB811A3}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTLEG
+   m_eBandageAnimationBodyPart RightLeg
+  }
+  SCR_CharacterHitZone LThigh {
+   ColliderNames {
+    "UCS_Thigh_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6D82}" {
+     Parent "Health"
+     DamageMultiplier 0.65
+     HealingMultiplier 0.65
+    }
+    ParentHitZone "{558729C1F2DC6D81}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 70
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Leg_L"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEB1F4A278}" {
+    }
+   }
+   m_eHitZoneGroup LEFTLEG
+   m_eBandageAnimationBodyPart LeftLeg
+  }
+  SCR_CharacterHitZone RCalf {
+   ColliderNames {
+    "UCS_Calf_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6D8B}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6D8A}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 50
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.75
+   "Explosive multiplier" 2
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Calf_R"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEA8503FE4}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTLEG
+   m_eBandageAnimationBodyPart RightLeg
+  }
+  SCR_CharacterHitZone LCalf {
+   ColliderNames {
+    "UCS_Calf_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6DB4}" {
+     Parent "Health"
+     DamageMultiplier 0.5
+     HealingMultiplier 0.5
+    }
+    ParentHitZone "{558729C1F2DC6DB3}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   MaxHealth 50
+   DamageReduction 1
+   DamageThreshold 1
+   AreaOverride 0.75
+   "Explosive multiplier" 2
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Calf_L"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEACADD8B4}" {
+    }
+   }
+   m_eHitZoneGroup LEFTLEG
+   m_eBandageAnimationBodyPart LeftLeg
+  }
+  SCR_CharacterHitZone RFoot {
+   ColliderNames {
+    "UCX_Foot_R"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6DBD}" {
+     Parent "Health"
+     DamageMultiplier 0.425
+     HealingMultiplier 0.425
+    }
+    ParentHitZone "{558729C1F2DC6DBC}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 30
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Foot_R"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEA7BA3286}" {
+    }
+   }
+   m_eHitZoneGroup RIGHTLEG
+   m_eBandageAnimationBodyPart RightLeg
+  }
+  SCR_CharacterHitZone LFoot {
+   ColliderNames {
+    "UCX_Foot_L"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6DA7}" {
+     Parent "Health"
+     DamageMultiplier 0.425
+     HealingMultiplier 0.425
+    }
+    ParentHitZone "{558729C1F2DC6DA6}" {
+     Parent "Resilience"
+     DamageMultiplier 0.7
+     HealingMultiplier 0
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 30
+   DamageReduction 1
+   DamageThreshold 1
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_aDamageSubmeshes {
+    "Foot_L"
+   }
+   m_aBleedingAreas {
+    LoadoutPantsArea "{5A6C71CEDFF65094}" {
+    }
+   }
+   m_eHitZoneGroup LEFTLEG
+   m_eBandageAnimationBodyPart LeftLeg
+  }
+  SCR_CharacterHitZone Neck {
+   ColliderNames {
+    "UCS_Neck"
+   }
+   ParentHZs {
+    ParentHitZone "{558729C1F2DC6DA0}" {
+     Parent "Health"
+     DamageMultiplier 0.7
+     HealingMultiplier 0.7
+     Overkill 1
+    }
+    ParentHitZone "{558729C1F2DC6DAF}" {
+     Parent "Resilience"
+     HealingMultiplier 0
+     Overkill 1
+    }
+   }
+   IgnoreExplosions 1
+   MaxHealth 25
+   DamageReduction 1
+   DamageThreshold 1
+   "Kinetic multiplier" 3
+   "DamageState threshold" {
+    0.5
+   }
+   m_fFullRegenerationTime 1200
+   m_fBleedingRateScale 10
+   m_aDamageSubmeshes {
+    "Head"
+   }
+   m_aBleedingAreas {
+    LoadoutVestArea "{5A6C71CECB60E4B8}" {
+    }
+    LoadoutJacketArea "{5A6C71CEC92C79B1}" {
+    }
+   }
+   m_eHitZoneGroup HEAD
+   m_eBandageAnimationBodyPart LowerHead
+  }
+ }
+ CollisionVelocityThreshold 1.2
+ "Heavy damage threshold" 999
+ m_sBleedingParticle "{486BD20FE5257A33}Particles/Enviroment/Bleeding_01_Continuous.ptc"
+}
