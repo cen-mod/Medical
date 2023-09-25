@@ -16,7 +16,7 @@ enum CEN_Medical_ECharacterBloodState
 	protected float m_fBloodVolume1;
 	protected float m_fBloodVolumeFatal;
 	//------------------------------------------------------------------------------------------------
-	float getBloodVolume(SCR_ChimeraCharacter unit )
+	float GetBloodVolume(SCR_ChimeraCharacter unit )
 	{	
 		SCR_CharacterDamageManagerComponent damageManagerComponent = SCR_CharacterDamageManagerComponent.Cast(unit.FindComponent(SCR_CharacterDamageManagerComponent));
 		SCR_CharacterBloodHitZone bloodvolume = SCR_CharacterBloodHitZone.Cast( damageManagerComponent.GetHitZoneByName("Blood"));
@@ -31,21 +31,21 @@ enum CEN_Medical_ECharacterBloodState
 		m_fBloodVolume3 = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_3_HEMORRHAGE);
 		m_fBloodVolume4 = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_4_HEMORRHAGE);
 		
-		if(getBloodVolume(unit) < m_fBloodVolume1)
+		if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume4 )
 		{
-			return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_1_HEMORRHAGE;
+			return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_4_HEMORRHAGE;
 		}
-		else if(getBloodVolume(unit) < m_fBloodVolume2 )
-			{
-				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_2_HEMORRHAGE;
-			}
-		else if(getBloodVolume(unit) < m_fBloodVolume3 )
+		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume3 )
 			{
 				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_3_HEMORRHAGE;
 			}
-		else if(getBloodVolume(unit) < m_fBloodVolume4 )
+		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume2 )
 			{
-				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_4_HEMORRHAGE;
+				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_2_HEMORRHAGE;
+			}
+		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume1 )
+			{
+				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_1_HEMORRHAGE;
 			}
 		else 
 			{
