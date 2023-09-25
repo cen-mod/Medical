@@ -1,33 +1,14 @@
-enum CEN_Medical_ECharacterBloodState
-{
-	BLOOD_VOLUME_CLASS_1_HEMORRHAGE,
-	BLOOD_VOLUME_CLASS_2_HEMORRHAGE,
-	BLOOD_VOLUME_CLASS_3_HEMORRHAGE,
-	BLOOD_VOLUME_CLASS_4_HEMORRHAGE,
-	BLOOD_VOLUME_FATAL
-}
 
 //------------------------------------------------------------------------------------------------
-modded class SCR_ChimeraCharacter
-{
-	protected float m_fCEN_Medical_lastUpdateTime = 0;
-
+class CEN_Medical_Vitals 
+{	
+	
 	//------------------------------------------------------------------------------------------------
-	float CEN_Medical_getLastUpdateTime()
+	static void VitalUpdater(SCR_ChimeraCharacter unit )
 	{
-		return m_fCEN_Medical_lastUpdateTime;
+		float m_fCEN_Medical_missionTime = GetGame().GetWorld().GetWorldTime();
+		float m_fCEN_Medical_deltaT = Math.Min( m_fCEN_Medical_missionTime - unit.CEN_Medical_getLastUpdateTime(),10);
 	}
-
+	
 	//------------------------------------------------------------------------------------------------
-	void CEN_Medical_updateLastUpdateTime()
-	{
-		m_fCEN_Medical_lastUpdateTime = GetGame().GetWorld().GetWorldTime();
-	}
 }
-
-//------------------------------------------------------------------------------------------------
-class VitalUpdater()
-{
- 
-}
-
