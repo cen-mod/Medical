@@ -6,6 +6,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	BLOOD_VOLUME_CLASS_4_HEMORRHAGE,
 	BLOOD_VOLUME_FATAL
 };
+[RplProp(onRplName: "UpdateHeartRate", condition: RplCondition.Custom, customConditionName: "SyncValues")]
 
 //------------------------------------------------------------------------------------------------
  modded class SCR_CharacterDamageManagerComponent  : ScriptedDamageManagerComponent
@@ -15,6 +16,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	protected float m_fBloodVolume2;
 	protected float m_fBloodVolume1;
 	protected float m_fBloodVolumeFatal;
+	protected int m_idefHeartRate;
 	//------------------------------------------------------------------------------------------------
 	float GetBloodVolume(SCR_ChimeraCharacter unit )
 	{	
@@ -24,7 +26,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		return m_fbloodVolume;
 	}
 	//------------------------------------------------------------------------------------------------
-	int GetHemorrhageClass(SCR_ChimeraCharacter unit)
+	int GetHemorrhageClass()
 	{
 		m_fBloodVolume1 = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_1_HEMORRHAGE);
 		m_fBloodVolume2 = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_2_HEMORRHAGE);
@@ -52,5 +54,38 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 				return -1;
 			}
 	}
-	
+	int GetFatalBloodVolume()
+	{
+		m_fBloodVolumeFatal = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_FATAL);
+		if (m_pBloodHitZone.GetHealthScaled() < m_fBloodVolumeFatal)
+		{
+			return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_FATAL;
+		}
+		else
+		{
+			return GetHemorrhageClass();
+		}
+		
+	}	
+	int GetDefaultHeartRate()
+	{	
+		protected int Min = 60;
+		protected int Max = 80;
+		Math.Randomize(-1);
+		m_idefHeartRate = Math.RandomIntInclusive(Min, Max);
+		return m_idefHeartRate;
+	}
+	void UpdateHeartRate()
+	{
+		int targetHR = GetDefaultHeartRate();
+		Replication.BumpMe();
+	}
+	bool SyncValues(SCR_ChimeraCharacter unit)
+	{	
+		SCR_ChimeraCharacter  character = SCR_ChimeraCharacter.Cast(unit.FindComponent(SCR_ChimeraCharacter));
+		protected float m_flastTimeValuesSynced = character.CEN_Medical_getlastTimeValuesSynced();
+		protected float m_fmissionTime = GetGame().GetWorld().GetWorldTime();
+		protected bool m_fsyncValues = m_fmissionTime - m_flastTimeValuesSynced >= 10 + Math.Floor(Math.RandomFloat(0, 10));
+		return m_fsyncValues;
+	}
 };
