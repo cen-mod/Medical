@@ -6,11 +6,13 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	BLOOD_VOLUME_CLASS_4_HEMORRHAGE,
 	BLOOD_VOLUME_FATAL
 };
-[RplProp(onRplName: "UpdateHeartRate", condition: RplCondition.Custom, customConditionName: "SyncValues")]
 
 //------------------------------------------------------------------------------------------------
  modded class SCR_CharacterDamageManagerComponent  : ScriptedDamageManagerComponent
-{
+{	
+	[RplProp()]
+	protected int m_iHeartRate;
+	
 	protected float m_fBloodVolume4;
 	protected float m_fBloodVolume3;
 	protected float m_fBloodVolume2;
@@ -38,22 +40,24 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 			return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_4_HEMORRHAGE;
 		}
 		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume3 )
-			{
+		{
 				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_3_HEMORRHAGE;
-			}
+		}
 		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume2 )
-			{
+		{
 				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_2_HEMORRHAGE;
-			}
+		}
 		else if(m_pBloodHitZone.GetHealthScaled() < m_fBloodVolume1 )
-			{
+		{
 				return CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_CLASS_1_HEMORRHAGE;
-			}
+		}
 		else 
-			{
+		{
 				return -1;
-			}
+		}
 	}
+	
+	//------------------------------------------------------------------------------------------------
 	int GetFatalBloodVolume()
 	{
 		m_fBloodVolumeFatal = m_pBloodHitZone.GetDamageStateThreshold(CEN_Medical_ECharacterBloodState.BLOOD_VOLUME_FATAL);
@@ -66,7 +70,9 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 			return GetHemorrhageClass();
 		}
 		
-	}	
+	}
+	
+	//------------------------------------------------------------------------------------------------	
 	int GetDefaultHeartRate()
 	{	
 		protected int Min = 60;
@@ -75,11 +81,15 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		m_idefHeartRate = Math.RandomIntInclusive(Min, Max);
 		return m_idefHeartRate;
 	}
+	
+	//------------------------------------------------------------------------------------------------
 	void UpdateHeartRate()
 	{
 		int targetHR = GetDefaultHeartRate();
 		Replication.BumpMe();
 	}
+	
+	//------------------------------------------------------------------------------------------------
 	bool SyncValues(SCR_ChimeraCharacter unit)
 	{	
 		SCR_ChimeraCharacter  character = SCR_ChimeraCharacter.Cast(unit.FindComponent(SCR_ChimeraCharacter));
