@@ -11,7 +11,9 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
  modded class SCR_CharacterDamageManagerComponent  : ScriptedDamageManagerComponent
 {	
 	[RplProp()]
-	protected int m_iHeartRate;
+	protected int m_iHeartRate = GetDefaultHeartRate();
+	[RplProp()]
+	protected float m_fPeriph_res;
 	
 	protected float m_fBloodVolume4;
 	protected float m_fBloodVolume3;
@@ -19,6 +21,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	protected float m_fBloodVolume1;
 	protected float m_fBloodVolumeFatal;
 	protected int m_idefHeartRate;
+	protected float m_fdefBloodVolume;
 	//------------------------------------------------------------------------------------------------
 	float GetBloodVolume(SCR_ChimeraCharacter unit )
 	{	
@@ -27,6 +30,15 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		float m_fbloodVolume = bloodvolume.GetHealth();
 		return m_fbloodVolume;
 	}
+	//------------------------------------------------------------------------------------------------
+	float GetDefaultBloodVolume(SCR_ChimeraCharacter unit)
+	{	
+		SCR_CharacterDamageManagerComponent damageManagerComponent = SCR_CharacterDamageManagerComponent.Cast(unit.FindComponent(SCR_CharacterDamageManagerComponent));
+		SCR_CharacterBloodHitZone bloodvolume = SCR_CharacterBloodHitZone.Cast( damageManagerComponent.GetHitZoneByName("Blood"));
+		float m_fBloodVolumedef = bloodvolume.GetMaxHealth();
+		return m_fBloodVolumedef;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	int GetHemorrhageClass()
 	{
@@ -83,12 +95,52 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	void UpdateHeartRate()
+	
+	float GetPeripheralResistance()
 	{
-		int targetHR = GetDefaultHeartRate();
-		Replication.BumpMe();
+		
 	}
 	
+	//------------------------------------------------------------------------------------------------
+	int PeripheralResistanceAdjustment()
+	{
+		protected int m_iperipheralResistanceAdjustments = 0;
+		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	
+	/* void UpdateHeartRate()
+	{	
+		protected bool m_fsyncValues = SyncValues(SCR_ChimeraCharacter unit);
+		protected int m_ihrChange;
+		protected int m_itargetHR;
+		protected int m_ibloodVolume = GetHemorrhageClass()
+		if (GetIsUnconscious() == true)  // mit CRDC arrest ersetzten
+		{
+			if(m_iHeartRate == 0)
+			{
+				m_fsyncValues = true;
+			}
+			if(m_iHeartRate != 0)
+			{
+				m_fsyncValues = true;
+				m_iHeartRate = 0;
+			}
+		}
+		else
+		{
+			m_ihrChange = 0;
+			m_itargetHR = 0;
+			if ( m_ibloodVolume = BLOOD_VOLUME_CLASS_4_HEMORRHAGE)
+			{
+			
+			}
+		
+		}
+		Replication.BumpMe();
+	}
+	*/
 	//------------------------------------------------------------------------------------------------
 	bool SyncValues(SCR_ChimeraCharacter unit)
 	{	
@@ -98,4 +150,25 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		protected bool m_fsyncValues = m_fmissionTime - m_flastTimeValuesSynced >= 10 + Math.Floor(Math.RandomFloat(0, 10));
 		return m_fsyncValues;
 	}
+	int GetBloodPressure()
+	{
+	
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	float GetCardiacOutput(SCR_ChimeraCharacter unit)
+	{	
+		m_fdefBloodVolume = GetDefaultBloodVolume(unit);
+		protected float m_fVentrileStroke = 0.095;
+		protected int m_ibloodVolumeRatio = GetBloodVolume(unit) / m_fdefBloodVolume ;
+		protected float m_fentering = Math.Map(m_ibloodVolumeRatio, 0.5, 1, 0, 1);
+		protected float m_fcardiacOutput = (m_fentering * m_fVentrileStroke) * m_iHeartRate / 60;
+		if (m_fcardiacOutput > 0)
+		{
+			m_fcardiacOutput = 0;
+		}
+		return m_fcardiacOutput;
+		
+	}
+	
 };
