@@ -102,7 +102,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	}
 	
 	//------------------------------------------------------------------------------------------------
-	int PeripheralResistanceAdjustment()
+	/*int PeripheralResistanceAdjustment()
 	{
 		protected int m_iperipheralResistanceAdjustments = 0;
 		
