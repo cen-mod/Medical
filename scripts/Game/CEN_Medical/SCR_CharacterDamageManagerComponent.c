@@ -15,6 +15,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 	[RplProp()]
 	protected float m_fPeriph_res;
 	
+	protected ref array<ref CEN_Medical_Medication> m_aCEN_Medical_medications = {};
 	protected float m_fBloodVolume4;
 	protected float m_fBloodVolume3;
 	protected float m_fBloodVolume2;
@@ -147,7 +148,7 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		SCR_ChimeraCharacter  character = SCR_ChimeraCharacter.Cast(unit.FindComponent(SCR_ChimeraCharacter));
 		protected float m_flastTimeValuesSynced = character.CEN_Medical_getlastTimeValuesSynced();
 		protected float m_fmissionTime = GetGame().GetWorld().GetWorldTime();
-		protected bool m_fsyncValues = m_fmissionTime - m_flastTimeValuesSynced >= 10 + Math.Floor(Math.RandomFloat(0, 10));
+		protected bool m_fsyncValues = Math.Min(m_fmissionTime - m_flastTimeValuesSynced, 10 + Math.Floor(Math.RandomFloat(0, 10))) ;
 		return m_fsyncValues;
 	}
 	int GetBloodPressure()
@@ -169,6 +170,37 @@ enum CEN_Medical_ECharacterBloodState : EDamageState
 		}
 		return m_fcardiacOutput;
 		
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	void UpdateAjustments()
+	{
+		protected float m_fHRtargetAjustment = 0;
+		protected float m_fPainsupressAdjustment = 0;
+		protected float m_fPeripheralresistanceAdjustment = 0;
+		
+		for(int i = m_aCEN_Medical_medications.Count() - 1; i >= 0; i--)
+		{	
+			CEN_Medical_Medication medication = m_aCEN_Medical_medications[i];
+			if( m_aCEN_Medical_medications.IsEmpty())
+			{
+				protected bool m_bdeleted = false;
+				protected float m_ftimeinsystem = GetGame().GetWorld().GetWorldTime() - medication.TimeAdded;
+				float m_feffectRatio = Math.Min(Math.Pow(m_ftimeinsystem / medication.TimeToMaxEffect,2), 1)*( medication.MaxTimeInSystem - m_ftimeinsystem) / medication.MaxTimeInSystem;
+				if(medication.HRAdjust !=0)
+				{
+					m_fHRtargetAjustment = m_fHRtargetAjustment + medication.HRAdjust * m_feffectRatio;
+				}
+				if(medication.PainAdjust != 0)
+				{
+						m_fPainsupressAdjustment = m_fPainsupressAdjustment + medication.PainAdjust *m_feffectRatio;
+				}
+				if(medication.FlowAdjust)
+				{
+					m_fPeripheralresistanceAdjustment = m_fPeripheralresistanceAdjustment + medication.FlowAdjust * m_feffectRatio;
+				}
+			}
+		}
 	}
 	
 };
