@@ -1,0 +1,13 @@
+SCR_CharacterDamageManagerComponent {
+ "Additional hit zones" {
+  SCR_CharacterBloodHitZone Blood {
+   "DamageState threshold" {
+    0.998
+    0.850
+    0.700
+    0.600
+    0.500
+   }
+  }
+ }
+}
